@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Datos de la API</title>
+</head>
+<style>
+    /* Estilo para el modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8); /* Fondo negro semi-transparente */
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: #000; /* Fondo negro */
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        color: #fff; /* Texto blanco */
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* Estilo general para el cuerpo */
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://backiee.com/static/wpdb/wallpapers/1000x563/197094.jpg'); /* Reemplaza 'url_de_la_imagen.jpg' con la URL de la imagen de fondo */
+        background-color: #000;
+        background-size: cover;
+        color: #fff; /* Texto blanco */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Estilos para títulos */
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: bold;
+        color: #cf076b; /* Color dorado */
+    }
+
+    /* Estilos para enlaces */
+    a {
+        color: #bb136f; /* Color dorado */
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* Estilos para el contenedor principal */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* Estilos para los títulos de sección */
+    .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    /* Estilos para botones */
+    .btn {
+        display: inline-block;
+        background-color: #c50886ad; /* Color dorado */
+        color: #000; /* Texto negro */
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #f7a6f0; /* Color dorado oscuro */
+    }
+
+    /* Espaciado uniforme */
+    .py-5 {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    /* Fondo claro */
+    .bg-light {
+        background-color: rgba(0, 0, 0, 0.8); /* Fondo negro semi-transparente */
+    }
+
+    /* Texto de color primario */
+    .text-primary {
+        color: #ff00aa; /* Color dorado */
+    }
+
+    /* Texto de color secundario */
+    .text-secondary {
+        color: #ccc; /* Gris claro */
+    }
+
+    /* Estilos para la barra de navegación */
+    .nav-bar {
+        background-color: rgba(0, 0, 0, 0.8); /* Fondo negro semi-transparente */
+        border-bottom: 1px solid #fdfdfd; /* Borde inferior dorado */
+        border-radius: 0 0 10px 10px; /* Bordes redondeados en la parte inferior */
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    /* Estilos para la marca del navbar */
+    .nav-bar .navbar-brand {
+        color: #fbd3ff; /* Texto dorado */
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 0;
+    }
+
+    /* Estilos para el botón del toggler del navbar */
+    .navbar-toggler {
+        border-color: #ff00ea; /* Color del borde dorado */
+    }
+
+    /* Estilos para el icono del toggler del navbar */
+    .navbar-toggler-icon {
+        background-color: #ff00c8; /* Color del icono dorado */
+    }
+
+    /* Estilos para los enlaces del navbar */
+    .navbar-nav .nav-link {
+        color: #ff00d4; /* Texto dorado */
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 20px;
+        transition: color 0.3s ease; /* Transición de color suave */
+    }
+
+    /* Estilos para los enlaces del navbar al pasar el mouse */
+    .navbar-nav .nav-link:hover {
+        color: #da20a2; /* Color dorado oscuro */
+    }
+
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .overlay {
+        width: 600px; /* Ancho del textarea */
+        height: 300px; /* Alto del textarea */
+        padding: 10px; /* Espaciado interno */
+        font-family: monospace; /* Fuente de espacio fijo para mantener el formato */
+        white-space: pre; /* Mantener el formato de espaciado y saltos de línea */
+    }
+    
+    #table-container {
+  margin-top: 60px; /* Reset the margin-top property */
+}
+
+#data-table {
+  overflow: hidden; /* Hide any overflow */
+}
+
+#data-table tbody {
+  height: 200px; /* Set a fixed height for the tbody element */
+  overflow-y: auto; /* Add a scrollbar for any overflow */
+}
+</style>
+
+<body>
+
+
+<!-- Navbar Start -->
+    <div class="container-fluid p-0 nav-bar">
+    <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3">
+        <a href="index.html" class="navbar-brand px-lg-4 m-0">
+        </a>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav ml-auto p-4">
+                
+                <a href="/" class="nav-item nav-link active">Home</a>
+                <button class="btn" onclick="openModal('insertar')">Insertar Datos</button>
+
+<!-- Ventana modal de inserción -->
+<div id="myModalInsertar" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('insertar')">&times;</span>
+        <h1>Insertar Datos</h1>
+        <form id="partesForm">
+        		<label for="pas">Parte:</label>
+        		<input type="text" id="pas" name="partes"><br>
+
+        		<label for="col">Color:</label>
+        		<input type="text" id="col" name="color"><br>
+
+        		<label for="pes">Peso:</label>
+        		<input type="text" id="pes" name="peso"><br>
+
+        		<label for="ciu">Ciudad:</label>
+        		<input type="text" id="ciu" name="ciudad"><br>
+
+        		<button type="button" onclick="insertarURL('partes')">Insertar Parte</button>
+    		</form>
+
+    		<form id="proveedorForm">
+        		<label for="prov">Proveedor:</label>
+        		<input type="text" id="prov" name="proveedor"><br>
+
+        		<label for="sta">Status:</label>
+        		<input type="text" id="sta" name="status"><br>
+
+        		<label for="ciu_prov">Ciudad:</label>
+        		<input type="text" id="ciu_prov" name="ciudad_prov"><br>
+
+        		<button type="button" onclick="insertarURL('proveedor')">Insertar Proveedor</button>
+    		</form>
+
+    		<form id="relacionForm">
+        		<label for="cod">Código:</label>
+        		<input type="text" id="cod" name="code"><br>
+
+        		<label for="proid">Proveedor ID:</label>
+        		<input type="text" id="proid" name="proveedor_id"><br>
+
+        		<label for="paid">Partes ID:</label>
+        		<input type="text" id="paid" name="partes_id"><br>
+
+        		<label for="can">Cantidad:</label>
+        		<input type="text" id="can" name="cantidad"><br>
+
+        		<button type="button" onclick="insertarURL('relacion')">Insertar Relación</button>
+    		</form>
+    </div>
+</div>
+
+
+<!-- Botón para abrir la ventana modal de actualización -->
+<button class="btn" onclick="openModal('actualizar')">Actualizar Datos</button>
+
+<!-- Ventana modal de actualización -->
+<div id="myModalActualizar" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('actualizar')">&times;</span>
+        <h1>Actualizar Datos</h1>
+        <form id="actualizarPartesForm">
+    				<label for="idPartes">ID de la Parte:</label>
+    				<input type="text" id="idPartes" name="idPartes"><br>
+
+    				<label for="partes">Parte:</label>
+   				 <input type="text" id="partes" name="partes"><br>
+
+    				<label for="color">Color:</label>
+    				<input type="text" id="color" name="color"><br>
+
+    				<label for="peso">Peso:</label>
+    				<input type="text" id="peso" name="peso"><br>
+
+    				<label for="ciudad">Ciudad:</label>
+    				<input type="text" id="ciudad" name="ciudad"><br>
+
+    				<button type="button" onclick="actualizarURL('partes')">Actualizar Parte</button>
+			</form>
+
+			<form id="actualizarProveedorForm">
+    				<label for="idProveedor">ID del Proveedor:</label>
+    				<input type="text" id="idProveedor" name="idProveedor"><br>
+
+    				<label for="proveedor">Proveedor:</label>
+   				 <input type="text" id="proveedor" name="proveedor"><br>
+
+    				<label for="status">Status:</label>
+    				<input type="text" id="status" name="status"><br>
+
+    				<label for="ciudadProv">Ciudad:</label>
+    				<input type="text" id="ciudadProv" name="ciudadProv"><br>
+
+    				<button type="button" onclick="actualizarURL('proveedor')">Actualizar Proveedor</button>
+			</form>
+
+			<form id="actualizarRelacionForm">
+			    <label for="codigo">Código:</label>
+			    <input type="text" id="codigo" name="codigo" onchange="console.log('codigo: ' + this.value);"><br>
+
+			    <label for="idPro">ID del Proveedor:</label>
+			    <input type="text" id="idPro" name="idPro" onchange="console.log('idPro: ' + this.value);"><br>
+
+			    <label for="idPa">ID de la Parte:</label>
+			    <input type="text" id="idPa" name="idPa" onchange="console.log('idPa: ' + this.value);"><br>
+
+			    <label for="cantidad">Cantidad:</label>
+			    <input type="text" id="cantidad" name="cantidad" onchange="console.log('cantidad: ' + this.value);"><br>
+
+			    <button type="button" onclick="actualizarURL('proveedor_partes')">Actualizar Relación</button>
+			</form>
+    </div>
+</div>
+
+<!-- Botón para abrir la ventana modal de eliminacion -->
+<button class="btn" onclick="openModal('eliminar')">Eliminar Datos</button>
+<!-- Ventana modal de actualización -->
+<div id="myModaleliminar" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('eliminar')">&times;</span>
+        <h1>Eliminar Datos</h1>
+			<form id="eliminarproveedorForm">
+			    <label for="prove_id">ID PROVEEDOR:</label>
+			    <input type="text" id="prove_id" name="prove_id" onchange="console.log('codigo: ' + this.value);"><br>
+			    <button type="button" onclick="eliminarURL('proveedor')">Eliminar Proveedor</button>
+			</form>
+			<form id="eliminarpartesForm">
+			    <label for="parteli_id">ID PARTES:</label>
+			    <input type="text" id="parteli_id" name="parteli_id" onchange="console.log('codigo: ' + this.value);"><br>
+			    <button type="button" onclick="eliminarURL('partes')">Eliminar Partes</button>
+			</form>
+    </div>
+</div>
+
+
+
+
+		<select id="opciones" class="btn" onchange="redirigir()">
+        		<option value="">CONSULTAS</option>
+        		<option value="1">Reporte de Proveedor</option>
+        		<option value="2">Partes</option>
+        		<option value="3">Proveedor</option>
+        		<option value="4">Proveedor Partes</option>
+        		<option value="5">Listado de Proveedores</option>
+        		<option value="6">Partes Vista</option>
+        		<option value="7">Reporte de Almacén</option>
+    		</select>
+		
+                </div>
+                
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar End -->
+    
+<div class="container" id="table-container">
+  <div class="overlay">
+    <h2>INFORMACION CONSULTADA</h2>
+    {% if datos %}
+    <!-- Mostrar todos los datos -->
+    <table id="data-table">
+      <thead>
+        <tr>
+          {% for header in datos[0] %}
+            <th>{{ header }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for fila in datos[1:] %}
+        <tr>
+          {% for valor in fila %}
+            <td>{{ valor }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p> Seleccione una consulta !.</p>
+    {% endif %}
+  </div>
+</div>
+   
+
+
+
+<script>
+$(document).ready(function() {
+  var tableContainer = $('#table-container');
+  var table = $('#data-table');
+  var tableHeight = table.outerHeight();
+  tableContainer.css('margin-top', tableHeight);
+});
+
+
+
+    function redirigir() {
+        var opcionSeleccionada = document.getElementById("opciones").value;
+        if (opcionSeleccionada) {
+            window.location.href = "/consultas/" + opcionSeleccionada;
+        }
+    }
+    
+     function openModal(tipo) {
+        if (tipo === 'insertar') {
+            document.getElementById('myModalInsertar').style.display = 'block';
+        } else if (tipo === 'actualizar') {
+            document.getElementById('myModalActualizar').style.display = 'block';
+        }else if (tipo === 'eliminar') {
+            document.getElementById('myModaleliminar').style.display = 'block';
+        }
+    }
+    
+    function closeModal(tipo) {
+        if (tipo === 'insertar') {
+            document.getElementById('myModalInsertar').style.display = 'none';
+        } else if (tipo === 'actualizar') {
+            document.getElementById('myModalActualizar').style.display = 'none';
+        }else if (tipo === 'eliminar') {
+            document.getElementById('myModaleliminar').style.display = 'none';
+        }
+    }
+    
+    function insertarURL(valor) {
+        var baseURL = 'http://0.0.0.0:8000/api/insertar/';
+        var url = '';
+
+        if (valor === 'partes') {
+            var partes = document.getElementById('pas').value;
+            var color = document.getElementById('col').value;
+            var peso = document.getElementById('pes').value;
+            var ciudad = document.getElementById('ciu').value;
+
+            url = baseURL + 'partes?partes=' + partes + '&color=' + color + '&peso=' + peso + '&ciudad=' + ciudad;
+        } else if (valor === 'proveedor') {
+            var proveedor = document.getElementById('prov').value;
+            var status = document.getElementById('sta').value;
+            var ciudad_prov = document.getElementById('ciu_prov').value;
+
+            url = baseURL + 'proveedor?proveedor=' + proveedor + '&status=' + status + '&ciudad=' + ciudad_prov;
+        } else if (valor === 'relacion') {
+            var code = document.getElementById('cod').value;
+            var proid = document.getElementById('proid').value;
+            var paid = document.getElementById('paid').value;
+            var cantidad = document.getElementById('can').value;
+
+            url = baseURL + 'proveedor_partes?code=' + code + '&proveedor_id=' + proid + '&partes_id=' + paid + '&cantidad=' + cantidad;
+        }
+
+        enviarURL(url);
+    }
+    
+    function actualizarURL(valor) {
+    var baseURL = 'http://0.0.0.0:8000/api/actualizar/';
+    var url = '';
+
+    if (valor === 'partes') {
+        var idPartes = document.getElementById('idPartes').value;
+        var partes = document.getElementById('partes').value;
+        var color = document.getElementById('color').value;
+        var peso = document.getElementById('peso').value;
+        var ciudad = document.getElementById('ciudad').value;
+
+        url = baseURL + 'partes/' + idPartes + '?partes=' + partes + '&color=' + color + '&peso=' + peso + '&ciudad=' + ciudad;
+    } else if (valor === 'proveedor') {
+        var idProveedor = document.getElementById('idProveedor').value;
+        var proveedor = document.getElementById('proveedor').value;
+        var status = document.getElementById('status').value;
+        var ciudadProv = document.getElementById('ciudadProv').value;
+
+        url = baseURL + 'proveedor/' + idProveedor + '?proveedor=' + proveedor + '&status=' + status + '&ciudad=' + ciudadProv;
+    } else if (valor === 'proveedor_partes') {
+        var codigo = document.getElementById('codigo').value;
+        console.log('codigo: ' + codigo);
+        var idProveedor = document.getElementById('idPro').value;
+        console.log('idProveedor: ' + idProveedor);
+        var idPartes = document.getElementById('idPa').value;
+        console.log('idPartes: ' + idPartes);
+        var cantidad = document.getElementById('cantidad').value;
+        console.log('cantidad: ' + cantidad);
+        url = baseURL + 'proveedor_partes/' + codigo + '?proveedor_id=' + idProveedor + '&partes_id=' + idPartes + '&cantidad=' + cantidad;
+        console.log('URL generada: ' + url);  // Agrega esta línea
+        
+    }
+
+    enviarURL(url);
+}
+function eliminarURL(valor) {
+    var baseURL = 'http://0.0.0.0:8000/api/eliminar/';
+    var url = '';
+
+    if (valor === 'partes') {
+        var idPartes_e = document.getElementById('parteli_id').value;
+        url = baseURL + 'partes/' + idPartes_e;
+        console.log('URL generada: ' + url);
+    }else if (valor === 'proveedor'){
+    	var idProveedor_e = document.getElementById('prove_id').value;
+        url = baseURL + 'proveedor/' + idProveedor_e;
+        console.log('URL generada: ' + url);
+    }
+    enviarURL(url);
+}
+
+    function enviarURL(url) {
+        fetch('/insertar/' + encodeURIComponent(url))
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
+    
+</script>
+</body>
+</html>
+

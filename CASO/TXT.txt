@@ -1,0 +1,4 @@
+2 terminales en el entorno virtual con flask, pymysql, gunicorn  instalado por pip
+gunicorn -w 4 -b 0.0.0.0:8000 api:app   <-- terminal 1 dentro del entorno virtual
+python3 Main.py <-- terminal 2 dentro del entorno virtual
+

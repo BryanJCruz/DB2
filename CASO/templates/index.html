@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos de la API</title>
+    <style>
+	body {
+  background-image: url('https://wallpapercave.com/uwp/uwp3838529.png');
+  background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+  background-attachment: fixed; /* Asegura que la imagen no se mueva al desplazarse */
+  background-position: center; /* Asegura que la imagen esté centrada */
+  opacity: 1; /* Ajusta este valor para controlar la opacidad de la imagen */
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.nav-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; /* Asegura que la barra de navegación esté por encima del contenido */
+    }
+
+    /* Ajuste del margen superior del contenido */
+    .main-content {
+        margin-top: 60px; /* Ajusta este valor según la altura de tu barra de navegación */
+    }
+
+.nav-bar .navbar-brand {
+  color: #fff;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.nav-bar.scrolled {
+  transform: translateY(-50px);
+}
+.black-overlay.visible {
+  opacity: 1;
+}
+
+.nav-bar .navbar-nav .nav-link {
+  color: #fff;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+}
+
+.nav-bar .navbar-nav .nav-link:hover {
+  background-color: #fff;
+  color: #000;
+  border-radius: 5px;
+}
+
+.black-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.section-title h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.text-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.btn
+    </style>
+
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="p-0 nav-bar text-container">
+    <nav class="navbar navbar-expand-lg bg-none navbar-dark py-3 ">
+        <a href="index.html" class="navbar-brand px-lg-4 m-0"></a>
+        
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav ml-auto p-4">
+                <h1 style="color: #f018ba; margin: 0;"> RPS</h1>
+                <a href="/" class="nav-item nav-link active">Home</a>
+                <a href="/consultas/0" class="nav-item nav-link">Consultas</a>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Navbar End -->
+
+<!-- Recuadro negro transparente -->
+<div class="black-overlay"></div>
+
+<!-- Acerca de Nosotros -->
+
+
+        <div class="section-title">
+  <h4 class="text-primary text-uppercase text-container" style="letter-spacing: 5px; color: #f942ff;">Acerca de Nosotros</h4>
+  <h1 class="display-4 text-container" style="color: #f830d7;">Sirviendo desde 1950</h1>
+</div>
+<div class="row">
+  <div class="col-lg-4 py-0 py-lg-5">
+    <div class="position-relative h-100">
+      <!-- Capa semitransparente -->
+      <div class="overlay" style="opacity: 0.5;"></div>
+      <!-- Texto -->
+      <div class="text-container">
+        <h1 class="mb-3" style="color: #fff;">Nuestra Historia</h1>
+        <h5 class="mb-3" style="color: #fff;">Con más de 70 años de experiencia en el mercado, somos líderes en la venta de repuestos para una amplia variedad de vehículos y equipos.</h5>
+                <p style="color: #fff;">En los albores de la década de 1950, en un pequeño taller de reparación de vehículos en el corazón de la ciudad, nació la visión de lo que se convertiría en una de las empresas más emblemáticas del sector automotriz. Con un puñado de herramientas y una inquebrantable determinación, nuestro fundador, Don Pedro Pacoreño, estableció los cimientos de lo que hoy conocemos como Repuestos Pacoreños XD.
+
+Desde sus primeros días, nuestra empresa se destacó por su compromiso inquebrantable con la calidad y el servicio excepcional. Don Pedro no solo buscaba ofrecer repuestos para vehículos de la más alta calidad, sino que también se esforzaba por brindar una experiencia al cliente que dejara una impresión duradera.
+
+Con el paso de los años, el pequeño taller de reparación se transformó en un centro integral de servicios automotrices. Desde la venta de repuestos hasta la reparación y el mantenimiento de vehículos, Repuestos Pacoreños XD se convirtió en el destino preferido para los conductores en busca de soluciones confiables y de calidad para sus necesidades automotrices.
+
+A medida que la empresa creció, también lo hizo su gama de productos. Lo que comenzó como una selección limitada de repuestos básicos se expandió para incluir una amplia variedad de componentes para una gran diversidad de vehículos y equipos. Desde repuestos para automóviles hasta accesorios para vehículos recreativos, nos esforzamos por satisfacer las necesidades cambiantes del mercado y superar las expectativas de nuestros clientes.
+
+Hoy en día, Repuestos Pacoreños XD es reconocido como un líder indiscutible en el sector automotriz. Nuestra historia de éxito se basa en valores arraigados en la tradición, la calidad y el compromiso con la excelencia. A medida que avanzamos hacia el futuro, seguimos dedicados a mantener vivo el legado de Don Pedro, proporcionando a nuestros clientes productos y servicios que inspiren confianza y satisfagan sus necesidades en constante evolución.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 py-5 py-lg-0 position-relative">
+                <div class="position-relative h-100">
+                    <!-- Capa semitransparente -->
+                    <div class="overlay"></div>
+                    <!-- Imagen de fondo -->
+
+                </div>
+         
+         
+         
+         
+         
+            </div>
+        <div class="text-container col-lg-4 py-0 py-lg-5">
+            <div class="text-container section-title text-container">
+                <h1 class="mb-3 text-primary" style="color: #ffee00;">Nuestra Visión</h1>
+                <p style="color: #ffdc17;">En Repuestos XYZ, nuestra visión es ser la primera opción para nuestros clientes cuando buscan repuestos de calidad y confiables. Nos esforzamos por ser líderes en la industria y proporcionar un servicio excepcional en todo momento.</p>
+                <h5 class="mb-3" style="color: #ffe714;"><i class="fa fa-check text-primary mr-3"></i>Compromiso con la calidad</h5>
+                <h5 class="mb-3" style="color: #ffe600;"><i class="fa fa-check text-primary mr-3"></i>Excelencia en el servicio al cliente</h5>
+                <h5 class="mb-3" style="color: #fbff1e;"><i class="fa fa-check text-primary mr-3"></i>Innovación constante</h5>
+                <a href="#" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Conoce Más</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- Fin de Acerca de Nosotros -->
+<!-- Nuestros Servicios -->
+<div class="section-title">
+  <h4 class="text-primary text-uppercase text-container" style="letter-spacing: 5px; color: #ffffff;">Nuestros Servicios</h4>
+  <h1 class="display-4 text-container" style="color: #ffffff;">Satisfaciendo Tus Necesidades Automotrices</h1>
+</div>
+
+<div class="row">
+  <div class="col-lg-4 py-0 py-lg-5">
+    <div class="position-relative h-100">
+      <!-- Capa semitransparente -->
+      <div class="overlay" style="opacity: 0.5;"></div>
+      <!-- Texto -->
+      <div class="text-container">
+        <h1 class="mb-3" style="color: #fff;">Venta de Repuestos</h1>
+        <h5 class="mb-3" style="color: #fff;">Contamos con un amplio catálogo de repuestos para una gran variedad de vehículos y equipos.</h5>
+        <p style="color: #fff;">En Repuestos XYZ, nos enorgullecemos de ofrecer repuestos de la más alta calidad para satisfacer todas tus necesidades automotrices. Desde piezas de motor hasta accesorios para el interior y el exterior de tu vehículo, tenemos todo lo que necesitas para mantener tu automóvil en óptimas condiciones.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 py-5 py-lg-0 position-relative">
+    <div class="position-relative h-100">
+      <!-- Capa semitransparente -->
+      <div class="overlay"></div>
+     
+    </div>
+  </div>
+
+  <div class="text-container col-lg-4 py-0 py-lg-5">
+    <div class="text-container section-title text-container">
+      <h1 class="mb-3 text-primary" style="color: #ffea2b;">Servicio de Atención al Cliente</h1>
+      <p style="color: #fffb23;">En Repuestos XYZ, nos dedicamos a brindar un servicio excepcional a nuestros clientes en todo momento. Nuestro equipo de expertos está aquí para ayudarte con cualquier pregunta o inquietud que puedas tener sobre nuestros productos y servicios.</p>
+      <h5 class="mb-3" style="color: #fbff0f;"><i class="fa fa-check text-primary mr-3"></i>Asistencia Personalizada</h5>
+      <h5 class="mb-3" style="color: #f0ff20;"><i class="fa fa-check text-primary mr-3"></i>Respuesta Rápida</h5>
+      <h5 class="mb-3" style="color: #f0ff1e;"><i class="fa fa-check text-primary mr-3"></i>Soporte Técnico Especializado</h5>
+      <a href="#" class="btn btn-primary font-weight-bold py-2 px-4 mt-2">Contacta con Nosotros</a>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 50) {
+        $('.nav-bar').addClass('scrolled');
+        $('.black-overlay').addClass('visible');
+      } else {
+        $('.nav-bar').removeClass('scrolled');
+        $('.black-overlay').removeClass('visible');
+      }
+    });
+</script>
+
+</body>
+</html>
+
+
